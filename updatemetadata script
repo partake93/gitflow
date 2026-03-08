@@ -1,0 +1,39 @@
+# Install CF CLI
+wget -q -O - "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8" | tar -zx
+sudo mv cf /usr/local/bin
+
+# Install Multiapps plugin
+cf install-plugin multiapps -f
+
+# Locate MTAR artifact automatically
+$mtar = Get-ChildItem -Path "$(System.DefaultWorkingDirectory)" -Recurse -Filter *.mtar | Select-Object -First 1
+
+Write-Host "MTAR File found:" $mtar.FullName
+
+# Login to Cloud Foundry
+cf api https://api.cf.ap21.hana.ondemand.com
+cf auth $(AdminUser) $(AdminPass)
+
+# Target environment
+cf target -o $(Organisation) -s $(Environment)
+
+# Deploy MTAR
+cf deploy $mtar.FullName -f --abort-on-error
+
+
+# ------------------------------------------------------------------
+# OPTIONAL: Add CI/CD deployment metadata (does NOT affect deploy)
+# ------------------------------------------------------------------
+
+$appName = "inbound-date-srv"
+
+Write-Host "Recording CI/CD deployment metadata for $appName"
+
+cf set-env $appName DEPLOYED_BY "AzureDevOps"
+cf set-env $appName BUILD_NUMBER "$(Build.BuildNumber)"
+cf set-env $appName RELEASE_NAME "$(Release.ReleaseName)"
+cf set-env $appName GIT_BRANCH "$(Build.SourceBranchName)"
+cf set-env $appName COMMIT_ID "$(Build.SourceVersion)"
+
+# Restart application to apply environment variables
+cf restart $appName

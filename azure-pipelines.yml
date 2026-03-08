@@ -1,0 +1,58 @@
+trigger:
+  branches:
+    include:
+      - develop
+      - qa
+      - main
+
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+# Install Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+# NPM stability fix (prevents CI failures due to npm audit/funding prompts)
+- script: |
+    echo "Applying NPM stability settings"
+    npm config set fund false
+    npm config set audit false
+  displayName: 'Stabilize NPM'
+
+# Install project dependencies
+- script: |
+    echo "Installing dependencies"
+    npm install
+  displayName: 'Install NPM Dependencies'
+
+# Install CAP CLI (required for cds build inside mta.yaml)
+- script: |
+    echo "Installing CAP CLI"
+    npm install -g @sap/cds-dk
+  displayName: 'Install CAP CLI'
+
+# Install MTA Build Tool
+- script: |
+    echo "Installing MTA Build Tool"
+    npm install -g mbt
+  displayName: 'Install MBT'
+
+# Build MTAR package (mta.yaml will run cds build automatically)
+- script: |
+    echo "Building MTAR archive"
+    mbt build -p cf
+
+    echo "Checking MTAR output"
+    ls -la mta_archives
+  displayName: 'Build MTAR'
+
+# Publish artifact for Release pipeline
+- publish: ./mta_archives
+  artifact: mta_archive
+  displayName: 'Publish MTAR Artifact'

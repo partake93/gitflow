@@ -1,0 +1,26 @@
+2026-03-08T07:08:31.7342843Z ##[section]Starting: PowerShell Script
+2026-03-08T07:08:31.7349469Z ==============================================================================
+2026-03-08T07:08:31.7349572Z Task         : PowerShell
+2026-03-08T07:08:31.7349627Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2026-03-08T07:08:31.7349710Z Version      : 2.268.1
+2026-03-08T07:08:31.7349765Z Author       : Microsoft Corporation
+2026-03-08T07:08:31.7349834Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2026-03-08T07:08:31.7349916Z ==============================================================================
+2026-03-08T07:08:31.8232872Z Generating script.
+2026-03-08T07:08:31.8264712Z ========================== Starting Command Output ===========================
+2026-03-08T07:08:31.8265152Z [command]/usr/bin/pwsh -NoLogo -NoProfile -NonInteractive -Command . '/home/vsts/work/_temp/13914561-2aca-4713-80b3-74e7dcd705e3.ps1'
+2026-03-08T07:08:35.7540754Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:08:37.5447043Z MTAR File found: /home/vsts/work/r1/a/_Proof of Delivery Inbound/mta_archive/inbound-date_1.0.0.mtar
+2026-03-08T07:08:37.5708584Z Detecting deployed applications...
+2026-03-08T07:08:37.5757530Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:08:37.5900602Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:08:37.5951996Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:08:37.5980884Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:08:37.9336999Z ‌InvalidOperation: ‌homevstswork_temp13914561-2aca-4713-80b3-74e7dcd705e3.ps1:26‌
+2026-03-08T07:08:37.9337915Z ‌Line |‌
+2026-03-08T07:08:37.9343762Z ‌  26 | ‌ $appList = ‌cf apps‌ | Select-String &quot;started&quot;‌
+2026-03-08T07:08:37.9344549Z ‌     | ‌            ~~~~~~~‌
+2026-03-08T07:08:37.9345157Z ‌     | ‌Cannot run a document in the middle of a pipeline: usrlocalbincf.‌
+2026-03-08T07:08:37.9863751Z 
+2026-03-08T07:08:37.9910818Z ##[error]PowerShell exited with code '1'.
+2026-03-08T07:08:37.9950170Z ##[section]Finishing: PowerShell Script

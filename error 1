@@ -1,0 +1,39 @@
+2026-03-08T07:13:24.5034623Z ##[section]Starting: PowerShell Script
+2026-03-08T07:13:24.5044450Z ==============================================================================
+2026-03-08T07:13:24.5044633Z Task         : PowerShell
+2026-03-08T07:13:24.5044725Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2026-03-08T07:13:24.5044859Z Version      : 2.268.1
+2026-03-08T07:13:24.5044950Z Author       : Microsoft Corporation
+2026-03-08T07:13:24.5045060Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2026-03-08T07:13:24.5045203Z ==============================================================================
+2026-03-08T07:13:24.5960744Z Generating script.
+2026-03-08T07:13:24.5986592Z ========================== Starting Command Output ===========================
+2026-03-08T07:13:24.5988182Z [command]/usr/bin/pwsh -NoLogo -NoProfile -NonInteractive -Command . '/home/vsts/work/_temp/58ed1fd2-7727-4715-8b08-c2fe60cdd6c7.ps1'
+2026-03-08T07:13:25.9386731Z Installing Cloud Foundry CLI...
+2026-03-08T07:13:25.9554566Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-03-08T07:13:25.9554990Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-03-08T07:13:25.9555109Z 
+2026-03-08T07:13:26.0062728Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-08T07:13:26.0066802Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-08T07:13:26.0525821Z 
+2026-03-08T07:13:26.0526262Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-08T07:13:26.1348096Z 
+2026-03-08T07:13:26.1349977Z 100 9363k  100 9363k    0     0  51.1M      0 --:--:-- --:--:-- --:--:-- 51.1M
+2026-03-08T07:13:26.4298313Z Installing MultiApps plugin...
+2026-03-08T07:13:26.5264133Z MTAR File found: /home/vsts/work/r1/a/_Proof of Delivery Inbound/mta_archive/inbound-date_1.0.0.mtar
+2026-03-08T07:13:26.5429100Z Deploying MTAR...
+2026-03-08T07:13:26.5474842Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:13:26.5514358Z Detecting deployed applications...
+2026-03-08T07:13:26.5535071Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:13:26.5809159Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:13:26.5818786Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:13:26.5862662Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:13:26.5874254Z xdg-open: file '/usr/local/bin/cf' does not exist
+2026-03-08T07:13:26.8762487Z ‌InvalidOperation: ‌homevstswork_temp58ed1fd2-7727-4715-8b08-c2fe60cdd6c7.ps1:33‌
+2026-03-08T07:13:26.8763490Z ‌Line |‌
+2026-03-08T07:13:26.8764841Z ‌  33 | ‌ $appList = ‌cf apps‌ | Select-String &quot;started&quot;‌
+2026-03-08T07:13:26.8766044Z ‌     | ‌            ~~~~~~~‌
+2026-03-08T07:13:26.8767436Z ‌     | ‌Cannot run a document in the middle of a pipeline: usrlocalbincf.‌
+2026-03-08T07:13:26.9225561Z 
+2026-03-08T07:13:26.9277527Z ##[error]PowerShell exited with code '1'.
+2026-03-08T07:13:26.9313353Z ##[section]Finishing: PowerShell Script
